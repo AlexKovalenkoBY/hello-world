@@ -36,84 +36,94 @@
 </template>
 
 <script>
-export default {
-
-
-// demo data
-var data = {
-  name: "My Tree",
-  children: [
-    { name: "hello" },
-    { name: "wat" },
-    {
-      name: "child folder",
-      children: [
-        {
-          name: "child folder",
-          children: [{ name: "hello" }, { name: "wat" }]
-        },
-        { name: "hello" },
-        { name: "wat" },
-        {
-          name: "child folder",
-          children: [{ name: "hello" }, { name: "wat" }]
-        }
-      ]
-    }
-  ]
-};
-
+// исходник примера с деревом взят  из 
+// https://v3.ru.vuejs.org/ru/examples/grid-component.html
+import Vue from 'vue'
 const app = Vue.createApp({
-  data: function() {
+  el: '#demo',
+  data() {
     return {
-      treeData: treeData
-    }
-  },
-  methods: {
-    makeFolder: function(item) {
-      item.children = [];
-      this.addItem(item);
-    },
-    addItem: function(item) {
-      item.children.push({
-        name: "new stuff"
-      });
+      searchQuery: '',
+      gridColumns: ['name', 'power'],
+      gridData: [
+        { name: 'Chuck Norris', power: Infinity },
+        { name: 'Bruce Lee', power: 9000 },
+        { name: 'Jackie Chan', power: 7000 },
+        { name: 'Jet Li', power: 8000 },
+          { name: 'Alex Kov-ko', power: 8888 }
+      ]
     }
   }
 })
 
-app.component("tree-item", {
-  template: '#item-template',
+// register the grid component
+app.component('demo-grid', {
+  template: '#grid-template',
   props: {
-    item: Object
+    heroes: Array,
+    columns: Array,
+    filterKey: String
   },
-  data: function() {
+  data() {
+    const sortOrders = {};
+    this.columns.forEach(function(key) {
+      sortOrders[key] = 1;
+    });
     return {
-      isOpen: false
-    };
+      sortKey: '',
+      sortOrders
+    }
   },
   computed: {
-    isFolder: function() {
-      return this.item.children && this.item.children.length;
+    filteredHeroes() {
+      const sortKey = this.sortKey
+      const filterKey = this.filterKey && this.filterKey.toLowerCase()
+      const order = this.sortOrders[sortKey] || 1
+      let heroes = this.heroes
+      if (filterKey) {
+        heroes = heroes.filter(function(row) {
+          return Object.keys(row).some(function(key) {
+            return (
+              String(row[key])
+                .toLowerCase()
+                .indexOf(filterKey) > -1
+            )
+          })
+        })
+      }
+      if (sortKey) {
+        heroes = heroes.slice().sort(function(a, b) {
+          a = a[sortKey]
+          b = b[sortKey]
+          return (a === b ? 0 : a > b ? 1 : -1) * order
+        })
+      }
+      return heroes
+    },
+    sortOrders() {
+      const columnSortOrders = {}
+      
+      this.columns.forEach(function(key) {
+        columnSortOrders[key] = 1
+      })
+
+      return columnSortOrders
     }
   },
   methods: {
-    toggle: function() {
-      if (this.isFolder) {
-        this.isOpen = !this.isOpen;
-      }
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1)
     },
-    makeFolder: function() {
-      if (!this.isFolder) {
-        this.$emit("make-folder", this.item);
-        this.isOpen = true;
-      }
+    sortBy(key) {
+      this.sortKey = key
+      this.sortOrders[key] = this.sortOrders[key] * -1
     }
   }
 })
 
 app.mount('#demo')
-}
+
+
 </script>
 
 <style>

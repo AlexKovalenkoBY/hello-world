@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
     <h1>{{ msg }} !!!</h1>
-<Tree/>
+<!-- <Tree/> -->
   </div>
 </template>
 
 <script>
-import Tree from '@/components/Tree.vue'
+//import Tree from '@/components/Tree.vue'
 
 export default {
-  components: { Tree },
+  components: {},
   name: 'HelloWorld',
   props: {
     msg: String

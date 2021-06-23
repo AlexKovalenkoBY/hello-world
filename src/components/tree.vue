@@ -8,11 +8,11 @@
       :item="treeData"
       @make-folder="makeFolder"
       @add-item="addItem"
-    ></tree-item> -->
+    ></tree-i`tem> -->
 
     <li>
       <div :class="{ bold: isFolder }" @click="toggle" @dblclick="makeFolder">
-        {{ dataSource.name }}
+        {{ item.name }}
         <span v-if="isFolder">[{{ isOpen ? "-" : "+" }}]</span>
       </div>
       <ul v-show="isOpen" v-if="isFolder">
@@ -71,7 +71,7 @@ export default {
           },
         ],
       },
-    }
+    };
   },
   methods: {
     toggle: function () {

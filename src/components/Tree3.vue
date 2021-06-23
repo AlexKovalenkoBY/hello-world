@@ -1,0 +1,55 @@
+<template>
+  <div>
+        <p>
+            Tree3 file
+        </p>
+    <!-- <script type="text/x-template" id="item-template">
+      <li>
+        <div
+             :class="{bold: isFolder}"
+             @click="toggle"
+             @dblclick="makeFolder">
+          {{ item.name }}
+          <span v-if="isFolder">[{{ isOpen ? '-' : '+' }}]</span>
+        </div>
+        <ul v-show="isOpen" v-if="isFolder">
+          <tree-item
+             class="item"
+             v-for="(child, index) in item.children"
+             :key="index"
+             :item="child"
+             @make-folder="$emit('make-folder', $event)"
+             @add-item="$emit('add-item', $event)"
+             ></tree-item>
+          <li class="add" @click="$emit('add-item', item)">+</li>
+        </ul>
+      </li>
+    </script> -->
+
+    <p>(You can double click on an item to turn it into a folder.)</p>
+
+    <!-- the demo root element -->
+    <!-- <ul id="demo">
+      <tree-item
+        class="item"
+        :item="treeData"
+        @make-folder="makeFolder"
+        @add-item="addItem"
+      ></tree-item>
+    </ul> -->
+  </div>
+</template>
+
+<script>
+export default {
+    name: "Tree3",
+    data() {},
+    methods: {},
+    props :{},
+    components: {}
+
+};
+</script>
+
+<style>
+</style>

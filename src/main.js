@@ -1,9 +1,4 @@
-/*import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
-*/
 import { createApp } from 'vue'
 import App2 from './App2.vue'
 
-createApp(App2).mount('#app2')
+createApp(App2).mount('#app')

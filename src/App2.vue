@@ -18,7 +18,7 @@ export default {
   data: function () {
     return {
       treeData: {
-        name: "My Tree",
+        name: "My TreeExample",
         children: [
           { name: "hello" },
           { name: "wat" },

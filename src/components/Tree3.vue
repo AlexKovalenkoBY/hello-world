@@ -3,6 +3,8 @@
         <p>
             Tree3 file
         </p>
+
+
     <!-- <script type="text/x-template" id="item-template">
       <li>
         <div
@@ -27,7 +29,12 @@
     </script> -->
 
     <p>(You can double click on an item to turn it into a folder.)</p>
-
+        <ul>
+          <li>item </li>
+          <li>item2 </li>
+          <li>item3</li>
+          <li>item4</li>
+        </ul>
     <!-- the demo root element -->
     <!-- <ul id="demo">
       <tree-item
@@ -37,16 +44,18 @@
         @add-item="addItem"
       ></tree-item>
     </ul> -->
+    <TreeItem3 />
   </div>
 </template>
 
 <script>
+import  TreeItem3 from  '@/components/TreeItem3.vue'
 export default {
     name: "Tree3",
     data() {},
     methods: {},
     props :{},
-    components: {}
+    components: {TreeItem3}
 
 };
 </script>

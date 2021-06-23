@@ -3,12 +3,13 @@
 
   <div>
     <h2>Tree Example</h2>
-    <!-- <tree-item
+    <tree-item
       class="item"
       :item="treeData"
       @make-folder="makeFolder"
       @add-item="addItem"
-    ></tree-i`tem> -->
+    >
+    </tree-item>
 
     <li>
       <div :class="{ bold: isFolder }" @click="toggle" @dblclick="makeFolder">
@@ -46,10 +47,9 @@
 import TreeItem from "@/components/TreeItem.vue";
 export default {
   name: "MyTree",
-  data() {
+  data: function () {
     return {
-      isOpen: false,
-      dataSource: {
+      treeData: {
         name: "My Tree",
         children: [
           { name: "hello" },
@@ -74,16 +74,11 @@ export default {
     };
   },
   methods: {
-    toggle: function () {
-      if (this.isFolder) {
-        this.isOpen = !this.isOpen;
-      }
-    },
-    makeFolder(item) {
+    makeFolder: function (item) {
       item.children = [];
       this.addItem(item);
     },
-    addItem(item) {
+    addItem: function (item) {
       item.children.push({
         name: "new stuff",
       });

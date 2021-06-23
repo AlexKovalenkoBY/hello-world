@@ -22,25 +22,7 @@ var treeData = {
     ]
   };
   
-  const app = Vue.createApp({
-    data: function() {
-      return {
-        treeData: treeData
-      }
-    },
-    methods: {
-      makeFolder: function(item) {
-        item.children = [];
-        this.addItem(item);
-      },
-      addItem: function(item) {
-        item.children.push({
-          name: "new stuff"
-        });
-      }
-    }
-  })
-  
+ 
   app.component("tree-item", {
     template: '#item-template',
     props: {

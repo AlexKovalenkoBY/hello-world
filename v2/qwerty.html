@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type=""
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111" />
+
+
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <title>CodePen - Vue 3 Tree View</title>
+
+    <link rel="stylesheet" media="screen"
+        href="https://cpwebassets.codepen.io/assets/fullpage/fullpage-4de243a40619a967c0bf13b95e1ac6f8de89d943b7fc8710de33f681fe287604.css" />
+
+
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type=""
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111" />
+
+
+
+
+    <title>CodePen - Vue 3 Tree View</title>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+
+    <style>
+        html {
+            font-size: 15px;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .referer-warning {
+            background: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            padding: 0.75em;
+            color: white;
+            text-align: center;
+            font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+            line-height: 1.2;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .referer-warning h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .referer-warning a {
+            color: #56bcf9;
+        }
+
+        /* $linkColorOnBlack */
+    </style>
+</head>
+
+<body class="">
+    <div class="referer-warning">
+      
+        A referer from CodePen is required to render this page view, and your browser is not sending one (<a
+            href="https://blog.codepen.io/2017/10/05/regarding-referer-headers/" target="_blank">more details</a>).</h1>
+    </div>
+
+    <div id="result-iframe-wrap" role="main">
+
+        <iframe id="result" srcdoc="
+<!DOCTYPE html>
+<html lang=&quot;en&quot; >
+
+<head>
+
+  <meta charset=&quot;UTF-8&quot;>
+  
+<link rel=&quot;apple-touch-icon&quot; type=&quot;image/png&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png&quot; />
+<meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;CodePen&quot;>
+
+<link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico&quot; />
+
+<link rel=&quot;mask-icon&quot; type=&quot;&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg&quot; color=&quot;#111&quot; />
+
+
+  <title>CodePen - Vue 3 Tree View</title>
+  
+  
+  
+  
+<style>
+body {
+  font-family: Menlo, Consolas, monospace;
+  color: #444;
+}
+.item {
+  cursor: pointer;
+}
+.bold {
+  font-weight: bold;
+}
+ul {
+  padding-left: 1em;
+  line-height: 1.5em;
+  list-style-type: dot;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage(&quot;resize&quot;, &quot;*&quot;);
+  }
+</script>
+
+
+</head>
+
+<body translate=&quot;no&quot; >
+  <!-- item template -->
+<script type=&quot;text/x-template&quot; id=&quot;item-template&quot;>
+  <li>
+    <div
+         :class=&quot;{bold: isFolder}&quot;
+         @click=&quot;toggle&quot;
+         @dblclick=&quot;makeFolder&quot;>
+      {{ item.name }}
+      <span v-if=&quot;isFolder&quot;>[{{ isOpen ? '-' : '+' }}]</span>
+    </div>
+    <ul v-show=&quot;isOpen&quot; v-if=&quot;isFolder&quot;>
+      <tree-item
+         class=&quot;item&quot;
+         v-for=&quot;(child, index) in item.children&quot;
+         :key=&quot;index&quot;
+         :item=&quot;child&quot;
+         @make-folder=&quot;$emit('make-folder', $event)&quot;
+         @add-item=&quot;$emit('add-item', $event)&quot;
+         ></tree-item>
+      <li class=&quot;add&quot; @click=&quot;$emit('add-item', item)&quot;>+</li>
+    </ul>
+  </li>
+</script>
+
+<p>(You can double click on an item to turn it into a folder.)</p>
+
+<!-- the demo root element -->
+<ul id=&quot;demo&quot;>
+  <tree-item
+    class=&quot;item&quot;
+    :item=&quot;treeData&quot;
+    @make-folder=&quot;makeFolder&quot;
+    @add-item=&quot;addItem&quot;
+    ></tree-item>
+</ul>
+    <script src=&quot;https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js&quot;></script>
+
+  <script src='https://unpkg.com/vue@next'></script>
+      <script id=&quot;rendered-js&quot; >
+// demo data
+var treeData = {
+  name: &quot;My Tree&quot;,
+  children: [
+  { name: &quot;hello&quot; },
+  { name: &quot;wat&quot; },
+  {
+    name: &quot;child folder&quot;,
+    children: [
+    {
+      name: &quot;child folder&quot;,
+      children: [{ name: &quot;hello&quot; }, { name: &quot;wat&quot; }] },
+
+    { name: &quot;hello&quot; },
+    { name: &quot;wat&quot; },
+    {
+      name: &quot;child folder&quot;,
+      children: [{ name: &quot;hello&quot; }, { name: &quot;wat&quot; }] }] }] };
+
+
+
+
+
+
+const app = Vue.createApp({
+  data: function () {
+    return {
+      treeData: treeData };
+
+  },
+  methods: {
+    makeFolder: function (item) {
+      item.children = [];
+      //this.addItem(item);
+    },
+    addItem: function (item) {
+      item.children.push({
+        name: &quot;new stuff&quot; });
+
+    } } });
+
+
+
+app.component(&quot;tree-item&quot;, {
+  template: '#item-template',
+  props: {
+    item: Object },
+
+  data: function () {
+    return {
+      isOpen: false };
+
+  },
+  computed: {
+    isFolder: function () {
+      return this.item.children &amp;&amp; this.item.children.length;
+    } },
+
+  methods: {
+    toggle: function () {
+      if (this.isFolder) {
+        this.isOpen = !this.isOpen;
+      }
+    },
+    makeFolder: function () {
+      if (!this.isFolder) {
+        this.$emit(&quot;make-folder&quot;, this.item);
+        this.isOpen = true;
+      }
+    } } });
+
+
+
+app.mount('#demo');
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
+" sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation  allow-scripts allow-top-navigation-by-user-activation"
+            allow="camera; geolocation; microphone" allowTransparency="true" allowpaymentrequest="true"
+            allowfullscreen="true" class="result-iframe">
+        </iframe>
+
+    </div>
+</body>
+
+</html>

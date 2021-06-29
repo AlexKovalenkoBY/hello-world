@@ -1,17 +1,17 @@
 <template>
-
-  <div><p>App2 Example</p>
-    <img alt="Vue logo" src="./assets/logo.png">
-  <Tree3/>
+  <div>
+    <p>App2 Example</p>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <Tree3 />
   </div>
 </template>
 
 <script>
-import Tree3 from '@/components/Tree3.vue'
+import Tree3 from "@/components/Tree3.vue";
 export default {
   name: "App2",
   components: {
-    Tree3
+    Tree3,
     //  HelloWorld
   },
 

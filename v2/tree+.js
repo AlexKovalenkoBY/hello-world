@@ -5,10 +5,10 @@ var treeData = {
       { name: "hello" },
       { name: "wat" },
       {
-        name: "child folder",
+        name: "child folder щио",
         children: [
           {
-            name: "child folder",
+            name: "child folder!",
             children: [{ name: "hello" }, { name: "wat" }]
           },
           { name: "hello" },

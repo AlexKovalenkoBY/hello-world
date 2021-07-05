@@ -72,64 +72,12 @@
 
 
   <script id="rendered-js">
-    // demo data
-    // var treeData1 = [];
-    // async function getUrl(URL) {
-    //   return new Promise((resolve, reject) => {
-    //     const response = fetch(URL, {
-    //       method: "GET",
-    //       headers: {
-    //         "Accept": "application/text",
-    //         "Content-Encoding": "gzip, identity, deflate",
-    //         "Accept-Encoding": "gzip"
-    //       }
-    //     });
-    //     if (response.ok === true) {
-    //       const sqlGetArr = response.text();
-    //       treeData1 = JSON.parse(sqlGetArr);
-    //       return treeData1;
-    //       // alert(getSqlResult);
-    //     }
-    //   })
-    // }
-    // async function getBPandPP() {
 
-    //   const response = await fetch("http://8-aris-bs:8888/api/BP_PP_TREE", {
-    //     method: "GET",
-    //     headers: {
-    //       "Accept": "application/text",
-    //       "Content-Encoding": "gzip, identity, deflate, gzip",
-    //       "Accept-Encoding": "gzip"
-    //     }
-    //   });
-    //   if (response.ok === true) {
-    //     const sqlGetArr = await response.text();
-    //     treeData1 = JSON.parse(sqlGetArr);
-    //     return treeData1;
-    //     // alert(getSqlResult);
-    //   }
-    // }
-
-    // const ttt = Promise.all([getUrl("http://8-aris-bs:8888/api/BP_PP_TREE")]).then(() => {
-    //   console.log('notes created');
-    // });
-    // var treeData = {
-    //   name: "Дерево БП Белагропромбанка",
-    //   childs: ttt[0]
-    // };
-    // var treeData = {
-    //   name: "Дерево БП Белагропромбанка",
-    //   childs: treeData
-    // }
-    // var treeData = {
-    //   name: "Дерево БП Белагропромбанка",
-    //   childs: ttt
-    // };
     var treeData = {
       name: "Дерево БП Белагропромбанка",
       childs: [
-        { name: "hello" },
-        { name: "wat" },
+        { name: "hello!" },
+        { name: "wat+*-" },
         {
           name: "child folder",
           childs: [
@@ -145,7 +93,7 @@
             }]
         }]
     };
-
+    // const Vue = require('vue');
     const app = Vue.createApp({
       data: function () {
         return {
@@ -160,7 +108,7 @@
         },
         addItem: function (item) {
           item.childs.push({
-            name: "new stuff"
+            name: "new элемент списка"
           });
 
         }

@@ -4,16 +4,17 @@
 
 <script>
 export default {
-  name: "Tree_item",
+  name: "Tree_Item3",
     data() {
     return {
+      elementString: "elementString",
       isOpen: false,
     };
   },
   components: {},
   computed: {
     isFolder: function () {
-      return this.item.children && this.item.children.length;
+      return this.itemName.children && this.itemName.children.length;
     },
   },
   methods: {
@@ -24,7 +25,7 @@ export default {
     },
     makeFolder: function () {
       if (!this.isFolder) {
-        this.$emit("make-folder", this.item);
+        this.$emit("make-folder", this.itemName);
         this.isOpen = true;
       }
     },

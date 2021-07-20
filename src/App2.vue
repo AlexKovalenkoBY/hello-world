@@ -1,9 +1,17 @@
 <template>
   <div>
     <p>App2 Example</p>
-    {{apidata}}
+    <!-- {{ apidata.data }} -->
+          <App2 
+            v-for="(child) in apidata.data" 
+            v-bind:item="child.itemName"
+            :index="subIndex"
+            :key="child.id"
+            :parentItem="item"
+            @deleteSubTask="deleteSubTask"
+            />
 
-    <Tree3 />
+    <!-- <Tree3 /> -->
   </div>
 </template>
 
@@ -16,32 +24,10 @@ export default {
     //  HelloWorld
   },
 
-  data:   function () {
-      
+  data: function () {
     return {
-      apidata : {},
-      treeData: {
-        name: "My TreeExample",
-        children: [
-          { name: "hello" },
-          { name: "wat" },
-          {
-            name: "child folder",
-            children: [
-              {
-                name: "child folder",
-                children: [{ name: "hello" }, { name: "wat" }],
-              },
-              { name: "hello" },
-              { name: "wat" },
-              {
-                name: "child folder",
-                children: [{ name: "hello" }, { name: "wat" }],
-              },
-            ],
-          },
-        ],
-      },
+      apidata: [],
+ 
     };
   },
   methods: {
@@ -55,14 +41,21 @@ export default {
       });
     },
   },
-    mounted() {
+   mounted() {
       const axios = require("axios")
-    axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.apidata = response));
-  }
 
-}
+    axios
+      .get('http://127.0.0.1:8888/api/PZK_TREE')
+      .then(response => {
+        this.apidata = response 
+        console.log('данные получены '+ this.apidata.data.length)});
+
+    // fetch("http://127.0.0.1:8888/api/PZK_TREE", {
+    //   method: "GET",
+    //   headers: { Accept: "application/json" },
+    // }).then((response) => (this.apidata = response));
+  },
+};
 </script>
 
 <style>

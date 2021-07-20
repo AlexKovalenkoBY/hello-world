@@ -30,20 +30,20 @@
 
     <p>(You can double click on an item to turn it into a folder.)</p>
         <ul>
-          <li>item </li>
+          <li>item1 </li>
           <li>item2 </li>
           <li>item3</li>
           <li>item4</li>
         </ul>
     <!-- the demo root element -->
-    <!-- <ul id="demo">
+    <ul id="demo">
       <tree-item
         class="item"
         :item="treeData"
         @make-folder="makeFolder"
         @add-item="addItem"
       ></tree-item>
-    </ul> -->
+    </ul>
     <TreeItem3 />
   </div>
 </template>

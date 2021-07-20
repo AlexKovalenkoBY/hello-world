@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>App2 Example</p>
-    <img alt="Vue logo" src="./assets/logo.png" />
+    {{apidata}}
+
     <Tree3 />
   </div>
 </template>
@@ -15,8 +16,10 @@ export default {
     //  HelloWorld
   },
 
-  data: function () {
+  data:   function () {
+      
     return {
+      apidata : {},
       treeData: {
         name: "My TreeExample",
         children: [
@@ -52,7 +55,14 @@ export default {
       });
     },
   },
-};
+    mounted() {
+      const axios = require("axios")
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.apidata = response));
+  }
+
+}
 </script>
 
 <style>
